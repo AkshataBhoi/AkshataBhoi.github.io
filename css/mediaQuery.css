@@ -1,0 +1,443 @@
+/* Header section */
+
+/* Navbar on small screens */
+@media (max-width: 768px) {
+  body {
+    padding-top: 90px;
+  }
+
+  nav ul {
+    display: none; /* Hide the navbar items by default on small screens */
+    flex-direction: column;
+    width: 100%;
+    background-color: var(--background-color);
+    position: absolute;
+    top: 60px; /* Adjust based on header height */
+    left: 0;
+    padding: 1rem 0;
+  }
+
+  nav ul.show {
+    display: flex; /* Show navbar items when the hamburger is clicked */
+  }
+
+  nav ul li {
+    margin: 1rem 0;
+    text-align: center;
+  }
+
+  /* Show hamburger menu on small screens
+  .hamburger {
+    display: flex;
+  } */
+
+  /* Button Styles */
+  button {
+    font-size: 18px; /* Adjust button size for mobile */
+    padding: 8px 16px;
+  }
+} 
+
+/* Home Section */
+
+/* For smaller screens, make sure profile image comes first */
+@media (max-width: 768px) {
+  .welcome-section {
+    flex-direction: column; /* Stack items vertically */
+    text-align: center; /* Center the content */
+  }
+
+  .left-section {
+    order: 2; /* This will move the description below */
+  }
+
+  .right-section {
+    order: 1; /* This will move the profile image to the top */
+    width: 100%;
+    text-align: center; /* Center the profile image */
+  }
+
+  .right-section img {
+    width: 250px; /* Adjust image size for smaller screens */
+    height: 250px; /* Adjust height as well */
+    margin-bottom: 20px; /* Space between image and description */
+  }
+
+  .left-section h1, .left-section p {
+    font-size: 16px; /* Reduce text size for small screens */
+  }
+  .typing-text {
+    font-size: 28px; /* Reduce font size for smaller screens */
+  }
+  .button-container {
+    flex-direction: column; /* Stack buttons vertically */
+    gap: 10px;
+    align-items: center; /* Center the buttons */
+  }
+}
+
+/* Media query for devices with width <= 950px */
+@media (max-width: 950px) {
+  .typing-text {
+    font-size: 1.8rem; /* Adjust font size */
+    max-width: 90%; /* Restrict maximum width */
+    white-space: normal; /* Allow text wrapping */
+    word-wrap: break-word; /* Wrap long words */
+    text-align: center; /* Ensure text stays centered */
+  }
+}
+
+/* Media query for devices with width <= 400px */
+@media (max-width: 400px) {
+  .typing-text {
+    font-size: 1.4rem; /* Smaller font size */
+    max-width: 95%;
+    text-align: left; /* Left-align for better readability */
+    margin: 0 auto;
+  }
+  button span { /* Assume text inside the button is wrapped in a span */
+    display: none; /* Hide the text */
+  }
+  button {
+    padding: 10px; /* Adjust padding to make buttons more compact */
+  }
+}
+
+
+
+/* For Very Small Devices like Phones */
+@media (max-width: 480px) {
+  .welcome-section {
+    padding: 15px;
+    height: auto;  /* Allow for flexible height */
+  }
+
+  /* Further reduce profile image size */
+  .profile-image {
+    width: 200px;
+    height: 200px;
+    max-height: 200px;  /* Ensure the image stays within bounds */
+  }
+}
+
+
+/* Toggle Button */
+
+/* For larger screens (desktops) */
+@media (min-width: 1024px) {
+  .theme-toggler {
+    bottom: 20px;
+    right: 20px;
+    width: 60px; /* Slightly larger button */
+    height: 60px;
+  }
+
+  .theme-toggler img {
+    width: 35px; /* Larger icon */
+    height: 35px;
+  }
+}
+
+/* For tablets and medium screens */
+@media (max-width: 1024px) and (min-width: 768px) {
+  .theme-toggler {
+    bottom: 15px;
+    right: 15px;
+    width: 55px;
+    height: 55px;
+  }
+
+  .theme-toggler img {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+/* For smaller screens (mobile) */
+@media (max-width: 768px) {
+  .theme-toggler {
+    bottom: 10px;
+    right: 10px;
+    width: 45px;
+    height: 45px;
+  }
+
+  .theme-toggler img {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+/* Projects Section */
+
+/* Adjustments for Tablets (screens between 600px and 1024px) */
+@media (max-width: 1024px) {
+  #projects {
+    padding: 1.5rem;
+    margin: 20px;
+  }
+
+  .project {
+    flex-direction: row;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .project-output img {
+    max-width: 70%;
+  }
+}
+
+/* Adjustments for Mobile Devices (screens smaller than 600px) */
+@media (max-width: 600px) {
+  #projects {
+    padding: 1rem;
+    margin: 10px;
+  }
+
+  .project {
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+  }
+
+  .project-title {
+    font-size: 1.5rem;
+  }
+
+  .project-description {
+    max-width: 90%;
+    padding: 10px;
+  }
+
+  .project-output img {
+    max-width: 100%;
+  }
+
+  .project-languages img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .button-container1 {
+    flex-direction: row; /* Ensure buttons are aligned horizontally */
+    justify-content: space-evenly; /* Distribute buttons evenly across available space */
+  }
+
+  .view-btn,
+  .github-btn {
+    width: 45%; /* Limit the button width so they fit side by side */
+  }
+}
+
+/* Larger Text on Desktop */
+@media (min-width: 1024px) {
+  .text-container {
+    font-size: 1.5rem; /* Bigger font on large screens */
+    padding: 2rem;
+  }
+
+  .text-container img {
+    width: 80%; /* Adjust image size for large screens */
+  }
+}
+
+/* Medium Screen Adjustments */
+@media (max-width: 1024px) and (min-width: 768px) {
+  .text-container {
+    font-size: 1.2rem; /* Slightly bigger text for medium screens */
+    padding: 1.5rem;
+  }
+
+  .text-container img {
+    width: 90%; /* Adjust image size for medium screens */
+  }
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+  .text-container {
+    font-size: 1rem; /* Smaller font for mobile */
+    padding: 1rem;
+  }
+
+  .text-container img {
+    width: 100%; /* Image will take full width on mobile */
+  }
+}
+/* Skills Section */
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .skills-container {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Smaller cards on smaller screens */
+    gap: 1rem;
+  }
+
+  .skill-logo {
+    width: 80px;
+    height: 80px;
+  }
+
+  .skill-logo img {
+    width: 50%;
+  }
+}
+
+/* Certificate Section */
+
+@media (max-width: 768px) {
+  .certification-dropdown {
+    width: 90%; /* Use more screen space on smaller devices */
+    padding: 0.8rem;
+    font-size: 0.9rem; /* Reduce text size */
+  }
+
+  .dropdown-toggle {
+    font-size: 1rem;
+    padding: 0.6rem;
+  }
+
+  .view-certificate-button {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem; /* Adjust button size */
+  }
+
+  .arrow {
+    font-size: 1rem; /* Slightly smaller arrow */
+    margin-left: 5px; /* Adjust spacing */
+  }
+}
+
+@media (max-width: 480px) {
+  .certification-dropdown {
+    width: 95%;
+    font-size: 0.8rem;
+  }
+
+  .dropdown-toggle {
+    font-size: 0.9rem;
+    padding: 0.5rem;
+  }
+
+  .view-certificate-button {
+    font-size: 0.8rem;
+    padding: 0.3rem 0.7rem;
+  }
+}
+
+
+/* My Education Section */
+
+/* For screens smaller than 768px (tablets and smaller devices) */
+@media (max-width: 768px) {
+  #education {
+    padding: 1rem; /* Reduce padding */
+  }
+
+  .education-container {
+    max-width: 90%; /* Allow more space on smaller screens */
+  }
+
+  .section-title {
+    font-size: 2rem; /* Reduce font size for the title */
+  }
+
+  .education-item {
+    flex-direction: column; /* Stack the icon and content vertically */
+    gap: 1rem; /* Reduce gap between icon and content */
+    padding: 1.5rem; /* Adjust padding */
+    width: 100%; /* Allow the item to take full width */
+  }
+
+  .edu-icon img {
+    width: 60px; /* Adjust icon size for smaller screens */
+    height: 60px;
+  }
+
+  .edu-content h3 {
+    font-size: 1.2rem; /* Reduce heading size */
+  }
+
+  .edu-content h4 {
+    font-size: 0.8rem; /* Slightly smaller subheading */
+  }
+
+  .edu-content p {
+    font-size: 0.9rem; /* Adjust paragraph font size */
+  }
+}
+
+/* For screens smaller than 480px (smartphones) */
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 1.8rem; /* Further reduce title font size */
+  }
+
+  .education-item {
+    padding: 1rem; /* Further reduce padding */
+  }
+
+  .edu-content h3 {
+    font-size: 1rem; /* Smaller heading for very small screens */
+  }
+
+  .edu-content p {
+    font-size: 0.8rem; /* Adjust text size */
+  }
+}
+
+
+/* Contact Me Section */
+
+@media (max-width: 768px) {
+  .content-wrapper {
+      flex-direction: column;
+      text-align: center;
+      padding: 20px;
+  }
+
+  .left-content {
+      padding: 0;
+      margin-bottom: 30px;
+  }
+}
+
+  /* Footer Media Queries */
+  /* Default styles for larger screens are already defined */
+
+@media (max-width: 768px) {
+  .footer-container {
+    padding: 1rem; /* Reduce padding for smaller screens */
+    max-width: 90%; /* Allow the container to take more width */
+  }
+
+  .footer-container p {
+    font-size: 1rem; /* Reduce font size */
+  }
+
+  .social-links {
+    flex-direction: column; /* Stack social icons vertically */
+    gap: 1rem; /* Reduce the gap between icons */
+  }
+
+  .social-icon img {
+    width: 30px; /* Adjust icon size for smaller screens */
+    height: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-container p {
+    font-size: 0.9rem; /* Further reduce font size */
+  }
+
+  .social-links {
+    gap: 0.5rem; /* Tighten gap further for very small screens */
+  }
+
+  .social-icon img {
+    width: 25px; /* Smaller icons for very small screens */
+    height: 25px;
+  }
+}
