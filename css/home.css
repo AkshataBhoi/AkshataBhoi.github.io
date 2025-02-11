@@ -22,13 +22,16 @@ body.light-mode {
   --button-background-hover: #d1d1d1;
   --button-background-hover-dark: #555555; /* Dark Mode Hover Background */
 }
-
-/* *{
-  /* margin: 0;
+* {
+  margin: 0;
   padding: 0;
-  box-sizing:border-box;
-  font-size:'Poppins', sans-serif; 
-} */
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  overflow-x: hidden; /* Prevents horizontal scrolling */
+}
 
 /* Apply the custom properties to the body */
 body {
@@ -79,69 +82,54 @@ header {
   left: 0; /* Ensures it starts from the left */
   width: 100%; /* Spans the entire width of the viewport */
   z-index: 1000; /* Ensures the header is above other elements */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: adds a shadow for better visibility */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Optional: adds a shadow for better visibility */
 }
 
-button {
-  background-color: var(--button-background); /* Default to light button color */
-  color: var(--button-color);
-  padding: 10px 20px;
-  border: none;
-  cursor: pointer;
-  font-size: 20px;
-  transition: background-color 0.3s ease;
-  border-radius: 5px;
+.navbar {
+  display: flex;
+  justify-content: center; /* Centers navbar */
 }
-
-button:hover {
-  background-color: var( --button-background-hover ); /* Hover effect for the button */
-}
-
-nav ul {
+.navbar ul {
   list-style: none;
   display: flex;
   justify-content: center;
-  padding: 0;
-  width: 100%;
-  height: 60%;
   align-items: center;
+  width: 100%;
+  height: auto;
   border-radius: 30px;
-  color: var(--accent-color);
+  margin: 15px;
+  gap: 25px;
   background-color: var(--background-color);
-  border:2px solid  #007bff;
-  scroll-margin-top: 60px; /* Adjust based on your navbar height */
+  border: 2px solid #007bff;
+  scroll-margin-top: 60px;
 }
 
-nav ul li {
+.navbar ul li {
   margin: 0 1rem;
 }
 
-nav ul li a {
+.navbar ul li a {
   text-decoration: none;
   color: #7e7d7d;
   font-weight: bold;
   transition: color 0.3s;
 }
 
-nav ul li a:hover {
-  color:  #007bff;
+.navbar ul li a:hover {
+  color: #007bff;
 }
-
-/* 
-/* Hamburger Icon 
-.hamburger {
-  display: none;
-  flex-direction: column;
+/* Hide menu toggle (☰) on desktop */
+.menu-toggle {
+  display: none; /* Hidden by default */
+  font-size: 28px;
+  background: none;
+  border: none;
   cursor: pointer;
+  color: #007bff;
+  position: absolute;
+  top: 15px;
+  right: 20px;
 }
-
-.hamburger div {
-  width: 25px;
-  height: 4px;
-  margin: 5px;
-  background-color: #333;
-  transition: transform 0.3s ease;
-} */
 
 /* Section Styles */
 section {
@@ -152,9 +140,11 @@ section {
   position: relative;
   min-height: auto; /* Ensure the section covers the full viewport height */
   overflow: hidden;
-  display: flex; /* Use Flexbox for vertical alignment */
-  flex-direction: column; /* Stack items vertically */
-  justify-content: flex-start; /* Push content to the bottom */
+  display: flex;                /* Use Flexbox for layout */
+  flex-direction: column;  
+  align-items: center;      /* Stack the items vertically */
+  justify-content: center;     /* Push content to the bottom */  
+  gap: 15rem;  
 }
 
 .typing-text{
@@ -162,8 +152,7 @@ section {
   font-weight: 600;
   min-width: 280px;
   color: #000;
-  margin: auto;
-  white-space: nowrap;  /* Ensures the text wraps normally */
+  margin: 5px;
   overflow: hidden;
 }
 
@@ -222,14 +211,30 @@ section {
 
 /* Welcome Section Container */
 .welcome-section {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   padding: 40px;
-  height: auto;
   background: linear-gradient(135deg, #ffffff 50%, #f9f9f9 50%);
   overflow: hidden;
-  position: relative;
+  position: relative; 
+  max-width: 1350px;
+  height: 75vb;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  justify-content: center;
+}
+
+welcome-section p{
+  padding: 2px;
+  font-weight: 500;
+  text-align: left;
+}
+
+.welcome-section h1{
+  color: #000;
+  font-size: 4rem;
+  font-weight: 700;
+  margin-top: 1.5rem;
+  line-height: 1;
 }
 
 /* Animated Background Effects */
@@ -240,7 +245,6 @@ section {
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle, rgba(255, 205, 210, 0.8) 0%, rgba(245, 127, 160, 0.8) 70%);
   animation: rotate-bg 10s infinite linear;
   z-index: -1;
 }
@@ -256,53 +260,51 @@ section {
 
 /* Left Section */
 .left-section {
-  flex: 1;
-  padding: 20px;
+  width: 50%; 
+  display: flex;
+  flex-direction: column;
   text-align: left;
+  justify-content: center;
   animation: fade-in 1.5s ease-out;
-  max-width: 50%;
 }
 
 .left-section h1 {
   font-size: 3rem;
   margin-bottom: 15px;
   color: #222;
-  text-transform: uppercase;
 }
 
 .left-section p {
-  font-size: 1.1rem;
-  line-height: 1.8;
+  width: 90%;
+  line-height: 1.6;
+  text-align: left;
   color: #4f4e4e;
-  margin-bottom: 20px;
+  padding: 2px;
+  font-weight: 500;
 }
 
 .profile-image {
-  width: 350px; /* Adjust the size of the circular image */
+  width: 100%;  /* Ensures image is responsive */
+  max-width: 350px; /* Prevents excessive stretching */
   height: 350px;
-  border-radius: 50%; /* Makes the image circular */
-  object-fit: cover; /* Maintain aspect ratio */
-  margin: 0 auto; /* Center horizontally */
-  display: block; /* Ensure it's a block element */
-  max-height: 350px; /* Prevent image from overflowing */
-}
-/* Right Section with Custom Hover Effect */
-.right-section {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  animation: slide-in 1.5s ease-out;
+  border-radius: 50%;
+  position: absolute;
+  right: 10%; /* Moves to the right */
+  top: 50%; /* Aligns vertically */
+  transform: translateY(-50%); /* Centers it vertically */
+  object-fit: cover;
+  margin: 0 auto; /* Centers horizontally */
+  transition: 0.4s ease-in-out;
 }
 
+/* Right Section */
 .right-section img {
   width: 300px;
-  height: auto;
   border-radius: 50%;
-  border: 3px solid  #007BFF;
+  border: 3px solid #007BFF;
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.7);
   transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  object-fit: cover;
 }
 
 .right-section img:hover {
@@ -397,7 +399,9 @@ section {
   transform: scale(1.05);
   color: #fff;
 }
-
+ .linkedin-btn span {
+  display: inline;
+}
 h1,
 h2 {
   color: #00bcd4;
@@ -604,6 +608,9 @@ p {
   transform: scale(1.05);
 }
 
+.github-btn span {
+  display: inline;
+}
 .project-demo-btn {
   align-self: flex-start; 
   background-color: #00bcd4;
@@ -962,6 +969,7 @@ button:hover {
   padding: 50px;
   max-width: fit-content;
   box-sizing: border-box;
+  border-radius: 20px;
   height: fit-content; /* Full viewport height */
   transition: box-shadow 0.3s ease; /* Transition for box-shadow */
   margin:0 auto;

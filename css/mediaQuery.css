@@ -6,30 +6,43 @@
     padding-top: 90px;
   }
 
-  nav ul {
-    display: none; /* Hide the navbar items by default on small screens */
+  .navbar {
+    justify-content: flex-end;
+    padding-right: 15px;
+  }
+
+  .navbar ul {
+    display: none;
     flex-direction: column;
-    width: 100%;
-    background-color: var(--background-color);
     position: absolute;
-    top: 60px; /* Adjust based on header height */
-    left: 0;
-    padding: 1rem 0;
+    top: 60px;
+    right: 15px;
+    background-color: var(--background-color);
+    width: 200px;
+    border-radius: 10px;
+    padding: 10px;
+    /* border: 2px solid #007bff; */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
   }
 
-  nav ul.show {
-    display: flex; /* Show navbar items when the hamburger is clicked */
+  .navbar ul.active {
+    display: flex; /* Show when toggled */
+    border:none;
   }
 
-  nav ul li {
-    margin: 1rem 0;
-    text-align: center;
+  .navbar ul li {
+    margin: 10px 0;
   }
 
-  /* Show hamburger menu on small screens
-  .hamburger {
-    display: flex;
-  } */
+  /* Show Menu Toggle (☰) Only on Mobile */
+  .menu-toggle {
+    display: block;
+  }
+
+  /* Fix Home Section Overlap */
+  .home-section {
+    margin-top: 100px; /* Push home content lower */
+  }
 
   /* Button Styles */
   button {
@@ -38,48 +51,114 @@
   }
 } 
 
-/* Home Section */
+/* Welcome Section */
 
-/* For smaller screens, make sure profile image comes first */
 @media (max-width: 768px) {
   .welcome-section {
-    flex-direction: column; /* Stack items vertically */
-    text-align: center; /* Center the content */
+    flex-direction: column;  /* Stacks the sections vertically */
+    align-items: center;     /* Centers content horizontally */
   }
 
+  
   .left-section {
-    order: 2; /* This will move the description below */
+    text-align: center;  /* Centers text */
+    padding: 0 20px; /* Optional: Adds some padding to the left section */
   }
 
-  .right-section {
-    order: 1; /* This will move the profile image to the top */
-    width: 100%;
-    text-align: center; /* Center the profile image */
+  .profile-image {
+    width: 150px;  /* Adjust the size of the profile image */
+    height: 150px;
+  }
+  /* Adjust for stacking order */
+  .left-section {
+    order: 2;  /* Move the content below the profile */
   }
 
-  .right-section img {
-    width: 250px; /* Adjust image size for smaller screens */
-    height: 250px; /* Adjust height as well */
-    margin-bottom: 20px; /* Space between image and description */
+  .left-section h1 {
+    font-size: 3rem; /* Reduce text size for small screens */
   }
 
-  .left-section h1, .left-section p {
-    font-size: 16px; /* Reduce text size for small screens */
+  .left-section p {
+    font-size: 1rem; /* Reduce text size for small screens */
+    text-align: justify;
+    
   }
+
   .typing-text {
     font-size: 28px; /* Reduce font size for smaller screens */
   }
+
+  .right-section {
+    order: 1;  /* Move profile image to the top */
+    width: 100%;
+    text-align: center;  /* Center the profile image */
+  }
+
+  .right-section img {
+    position:relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px; /* Space between image and description */
+    position: static; /* Removes absolute positioning */
+    transform: none; /* Prevents shifting */
+    max-width: 250px; /* Adjust for smaller screens */
+    height: 250px;
+    margin-top: 10px; /* Adds space */
+  }
+
   .button-container {
-    flex-direction: column; /* Stack buttons vertically */
+    flex-direction: row; /* Stack buttons horizontally*/
     gap: 10px;
     align-items: center; /* Center the buttons */
+    text-decoration: none;
   }
 }
 
-/* Media query for devices with width <= 950px */
+/* Welcome section buttons styling */
+@media (max-width: 768px) {
+  .github-btn,
+  .linkedin-btn {
+    padding: 10px; /* Adjust padding for better spacing */
+    justify-content: center; /* Center the icon */
+    border: none;
+  }
+
+  .github-btn span,
+  .linkedin-btn span {
+    display: none; /* Hide the text */
+  }
+
+  .github-btn img,
+  .linkedin-btn img {
+    width: 25px; /* Make the icon slightly bigger for better visibility */
+    height: 25px;
+  } 
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    justify-content: flex-end;
+    padding: 25px;
+  }
+
+  .navbar ul li a {
+    color: #007bff; 
+  }
+
+  .navbar ul {
+        width: 100%;
+        padding: 5px;
+        align-items: flex-end;
+        margin: 0;
+        background-color: transparent;
+  }
+}
+
+/* For devices with width <= 950px */
 @media (max-width: 950px) {
   .typing-text {
-    font-size: 1.8rem; /* Adjust font size */
+    font-size: 1.1rem; /* Adjust font size */
     max-width: 90%; /* Restrict maximum width */
     white-space: normal; /* Allow text wrapping */
     word-wrap: break-word; /* Wrap long words */
@@ -87,41 +166,61 @@
   }
 }
 
-/* Media query for devices with width <= 400px */
+/* For smaller devices (<= 400px) */
 @media (max-width: 400px) {
   .typing-text {
-    font-size: 1.4rem; /* Smaller font size */
+    font-size: 1.2rem; /* Smaller font size */
     max-width: 95%;
     text-align: left; /* Left-align for better readability */
     margin: 0 auto;
   }
-  button span { /* Assume text inside the button is wrapped in a span */
-    display: none; /* Hide the text */
+
+  button span { /* Hide the text inside the button */
+    display: none;
   }
+
   button {
     padding: 10px; /* Adjust padding to make buttons more compact */
   }
 }
 
-
-
-/* For Very Small Devices like Phones */
+/* Very small devices (<= 480px) */
 @media (max-width: 480px) {
   .welcome-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;  /* Center content horizontally */
+    justify-content: flex-start;  /* Align content to the top */
     padding: 15px;
-    height: auto;  /* Allow for flexible height */
+    height: auto;
+    color: black;
   }
 
-  /* Further reduce profile image size */
+  /* Profile image */
   .profile-image {
     width: 200px;
     height: 200px;
-    max-height: 200px;  /* Ensure the image stays within bounds */
+    max-height: 200px;
+    border-radius: 50%;  /* Optional: Makes the profile picture circular */
+    margin-bottom: 15px;  /* Adds space between image and the content below */
   }
 }
 
-
 /* Toggle Button */
+/* For smaller screens (mobile) */
+@media (max-width: 768px) {
+  .theme-toggler {
+    bottom: 10px;
+    right: 10px;
+    width: 45px;
+    height: 45px;
+  }
+
+  .theme-toggler img {
+    width: 25px;
+    height: 25px;
+  }
+}
 
 /* For larger screens (desktops) */
 @media (min-width: 1024px) {
@@ -138,35 +237,48 @@
   }
 }
 
-/* For tablets and medium screens */
-@media (max-width: 1024px) and (min-width: 768px) {
-  .theme-toggler {
-    bottom: 15px;
-    right: 15px;
-    width: 55px;
-    height: 55px;
-  }
+/* Certificate Section */
 
-  .theme-toggler img {
-    width: 30px;
-    height: 30px;
-  }
-}
-
-/* For smaller screens (mobile) */
 @media (max-width: 768px) {
-  .theme-toggler {
-    bottom: 10px;
-    right: 10px;
-    width: 45px;
-    height: 45px;
+  .certification-dropdown {
+    width: 90%; /* Use more screen space on smaller devices */
+    padding: 0.8rem;
+    font-size: 0.9rem; /* Reduce text size */
   }
 
-  .theme-toggler img {
-    width: 25px;
-    height: 25px;
+  .dropdown-toggle {
+    font-size: 1rem;
+    padding: 0.6rem;
+  }
+
+  .view-certificate-button {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem; /* Adjust button size */
+  }
+
+  .arrow {
+    font-size: 1rem; /* Slightly smaller arrow */
+    margin-left: 5px; /* Adjust spacing */
   }
 }
+
+@media (max-width: 480px) {
+  .certification-dropdown {
+    width: 95%;
+    font-size: 0.8rem;
+  }
+
+  .dropdown-toggle {
+    font-size: 0.9rem;
+    padding: 0.5rem;
+  }
+
+  .view-certificate-button {
+    font-size: 0.8rem;
+    padding: 0.3rem 0.7rem;
+  }
+}
+
 
 /* Projects Section */
 
@@ -230,47 +342,22 @@
   }
 }
 
-/* Larger Text on Desktop */
-@media (min-width: 1024px) {
-  .text-container {
-    font-size: 1.5rem; /* Bigger font on large screens */
-    padding: 2rem;
-  }
 
-  .text-container img {
-    width: 80%; /* Adjust image size for large screens */
-  }
-}
 
-/* Medium Screen Adjustments */
-@media (max-width: 1024px) and (min-width: 768px) {
-  .text-container {
-    font-size: 1.2rem; /* Slightly bigger text for medium screens */
-    padding: 1.5rem;
-  }
 
-  .text-container img {
-    width: 90%; /* Adjust image size for medium screens */
-  }
-}
-
-/* Mobile Adjustments */
-@media (max-width: 768px) {
-  .text-container {
-    font-size: 1rem; /* Smaller font for mobile */
-    padding: 1rem;
-  }
-
-  .text-container img {
-    width: 100%; /* Image will take full width on mobile */
-  }
-}
 /* Skills Section */
+@media (max-width: 1024px) {
+  .skills-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns for tablets */
+    gap: 1.5rem;
+  }
+}
 
-/* Responsive Design */
 @media (max-width: 768px) {
   .skills-container {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Smaller cards on smaller screens */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns for smaller screens */
     gap: 1rem;
   }
 
@@ -284,47 +371,22 @@
   }
 }
 
-/* Certificate Section */
-
-@media (max-width: 768px) {
-  .certification-dropdown {
-    width: 90%; /* Use more screen space on smaller devices */
-    padding: 0.8rem;
-    font-size: 0.9rem; /* Reduce text size */
-  }
-
-  .dropdown-toggle {
-    font-size: 1rem;
-    padding: 0.6rem;
-  }
-
-  .view-certificate-button {
-    font-size: 0.9rem;
-    padding: 0.4rem 0.8rem; /* Adjust button size */
-  }
-
-  .arrow {
-    font-size: 1rem; /* Slightly smaller arrow */
-    margin-left: 5px; /* Adjust spacing */
-  }
-}
-
 @media (max-width: 480px) {
-  .certification-dropdown {
-    width: 95%;
-    font-size: 0.8rem;
+  .skills-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 column for smaller screens */
+    gap: 1rem;
+    justify-items: center; /* Center items horizontally */
+    align-items: center;   /* Center items vertically */
+    padding: 0 10px; /* Padding to prevent overflow */
   }
 
-  .dropdown-toggle {
-    font-size: 0.9rem;
-    padding: 0.5rem;
-  }
-
-  .view-certificate-button {
-    font-size: 0.8rem;
-    padding: 0.3rem 0.7rem;
+  .skill-card {
+    width: 100%; /* Ensure each skill card takes up full width of grid */
+    max-width: 300px; /* You can adjust this to your preference */
   }
 }
+
 
 
 /* My Education Section */
@@ -389,7 +451,6 @@
 
 
 /* Contact Me Section */
-
 @media (max-width: 768px) {
   .content-wrapper {
       flex-direction: column;

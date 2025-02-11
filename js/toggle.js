@@ -49,7 +49,10 @@ document.addEventListener("DOMContentLoaded", () => {
    localStorage.setItem("theme", newTheme); // Save the theme to localStorage
  }
 
-
+// Hamburger toggle script
+document.querySelector(".menu-toggle").addEventListener("click", function () {
+  document.querySelector(".navbar ul").classList.toggle("active");
+});
 
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
@@ -107,8 +110,32 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-document.querySelector('.hamburger-menu').addEventListener('click', function() {
-  this.classList.toggle('active');
-  document.querySelector('nav ul').classList.toggle('active');
-});
 
+
+function sendMail() {
+  emailjs.init("Ch5EiDYJodeyBF0nQ"); // Replace with your EmailJS Public Key
+
+  let params = {
+    from_name: document.getElementById("name").value,
+    email: document.getElementById("email").value,
+    message: document.getElementById("message").value,
+  };
+
+  const serviceId = "service_szdcb6f"; // Replace with your actual service ID
+  const templateId = "template_2zyqe8g"; // Replace with your actual template ID
+
+  console.log("Sending email with params:", params); // Debugging log
+
+  emailjs.send(serviceId, templateId, params)
+    .then((res) => {
+      console.log("Success Response:", res); // Log full response
+
+      if (res.status === 200) {
+        alert("Your mail was sent successfully!");
+        document.getElementById("contactForm").reset();
+      } else {
+        console.error("Unexpected response:", res);
+        alert("Email may not have sent correctly. Check console for details.");
+      }
+    })
+}

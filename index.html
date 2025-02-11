@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Portfolio</title>
+    <title>InnovativeStack | Akshata Bhoi</title>
     <link rel="stylesheet" href="css/home.css" />
     <link rel="stylesheet" href="css/mediaQuery.css" />
      <!-- Google Fonts Section -->
@@ -13,13 +13,19 @@
        href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap"
        rel="stylesheet"
      />
-     
+     <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
+     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+     <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
+     <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
   </head>
   <body>
     <header>
-      <nav>
-        <!-- Hamburger menu for mobile -->
-        <!-- <div class="hamburger" id="hamburger"> -->
+      <nav class="navbar">
+        <button class="menu-toggle">☰</button>
         <ul> 
           <li><a href="#home">Home</a></li>
           <li><a href="#projects">Projects</a></li>
@@ -29,6 +35,7 @@
           <li><a href="#contact-section">Contact Me</a></li>
         </ul>
       </nav>
+      
     </header>
     <div id="theme-toggle" class="theme-toggler">
       <button id="toggle-button" aria-label="Toggle Theme">
@@ -48,11 +55,10 @@
       
       <div class="welcome-section">
         <div class="left-section">
-          <h1>Hi!,<br>It's Akshata</h1>
+          <h1>Hi,<br>It's <span style="color:#007BFF;">Akshata</span></h1>
           <div class="typing-text">
             I'm a <span></span>
           </div>
-        
           
           <p>
             I create visually stunning, user-friendly websites that blend art and technology.
@@ -69,7 +75,7 @@
                 alt="GitHub Logo"
                 class="btn-icon"
               />
-              GitHub
+              <span>GitHub</span>
             </a>
             <a
               href="https://www.linkedin.com/in/akshata-bhoi-04a110342?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
@@ -81,7 +87,7 @@
                 alt="LinkedIn Logo"
                 class="btn-icon"
               />
-              LinkedIn
+              <span>LinkedIn</span>
             </a>
           </div>
         </div>
@@ -456,18 +462,18 @@
           <h1>Let's create something <br> extraordinary together!</h1>
         </div>
         <div class="right-content">
-          <form action="mailto:akshatabbhoi@gmial.com">
+          <form>
             <!-- <label for="name">Your name</label> -->
-            <input type="text" id="name" placeholder="Enter your name" required class="hover-effect" />
+            <input type="text" id="name" name="name" placeholder="Enter your name" required class="hover-effect" />
             
             <!-- <label for="email">Your email</label> -->
-            <input type="email" id="email" placeholder="Enter your email" required class="hover-effect"/>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required class="hover-effect"/>
             
             <!-- <label for="message">Message</label> -->
-            <textarea id="message" placeholder="Write your message" required class="hover-effect"></textarea>
+            <textarea id="message" name="message" placeholder="Write your message" required class="hover-effect"></textarea>
             
     
-            <button type="submit">Send Message</button>
+            <button type="button" onclick="sendMail()">Send Message</button>
           </form>
         </div>
       </div>
@@ -521,3 +527,4 @@
 </html>
 
 <!-- https://www.benrogers.dev/ -->
+<!-- https://akshatabhoi.github.io/ -->
