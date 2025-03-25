@@ -115,27 +115,33 @@ document.addEventListener("DOMContentLoaded", () => {
 function sendMail() {
   emailjs.init("Ch5EiDYJodeyBF0nQ"); // Replace with your EmailJS Public Key
 
+  // Get user input values
   let params = {
-    from_name: document.getElementById("name").value,
-    email: document.getElementById("email").value,
-    message: document.getElementById("message").value,
+      from_name: document.getElementById("from_name").value,
+      email: document.getElementById("email").value,
+      message: document.getElementById("message").value,
   };
 
-  const serviceId = "service_szdcb6f"; // Replace with your actual service ID
-  const templateId = "template_2zyqe8g"; // Replace with your actual template ID
+  const serviceId = "service_szdcb6f";  // Your actual service ID
+  const templateId = "template_2zyqe8g"; // Your actual template ID
 
   console.log("Sending email with params:", params); // Debugging log
 
+  // Send email using EmailJS
   emailjs.send(serviceId, templateId, params)
-    .then((res) => {
-      console.log("Success Response:", res); // Log full response
-
-      if (res.status === 200) {
-        alert("Your mail was sent successfully!");
-        document.getElementById("contactForm").reset();
-      } else {
-        console.error("Unexpected response:", res);
-        alert("Email may not have sent correctly. Check console for details.");
-      }
-    })
+      .then((res) => {
+          console.log("Success Response:", res); // Log full response
+          if (res.status === 200) {
+              alert("Your mail was sent successfully!");
+              document.getElementById("contactForm").reset();
+          } else {
+              console.error("Unexpected response:", res);
+              alert("Email may not have sent correctly. Check console for details.");
+          }
+      })
+      .catch((err) => {
+          console.error("Error sending email:", err);
+          alert("There was an error sending your message. Check console for details.");
+      });
 }
+
