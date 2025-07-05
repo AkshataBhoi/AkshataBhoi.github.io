@@ -70,7 +70,7 @@
   .menu-toggle {
     position: absolute;
     right: 5%;
-    top: 20%;
+    top: 10%;
     display: block;
     cursor: pointer;
     transition: transform 0.3s ease;
@@ -82,6 +82,8 @@
   }
   .name-container {
     font-size: 40px;
+    position: relative;
+    left: 0%;
   }
   .name-animate {
     font-size: 40px;
@@ -209,7 +211,7 @@
 
 /* For devices with width <= 950px */
 @media (max-width: 950px) {
-  .typing-text {
+  .-text-text {
     font-size: 1.1rem; /* Adjust font size */
     max-width: 90%; /* Restrict maximum width */
     white-space: normal; /* Allow text wrapping */
@@ -225,6 +227,10 @@
     max-width: 95%;
     text-align: center; /* Left-align for better readability */
     margin: 0 auto;
+    background: linear-gradient(135deg, #ffffff 20%,#f9f9f9 80%);
+  }
+  .typing-text span::after{
+       background: linear-gradient(135deg, #ffffff 20%,#f9f9f9 80%);
   }
 
   button span {
