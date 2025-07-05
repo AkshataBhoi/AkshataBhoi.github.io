@@ -1,4 +1,12 @@
 /* Header section */
+.header {
+  background-color: blur;
+}
+
+/* Hide hamburger menu on desktop */
+.menu-toggle {
+  display: none;
+}
 
 /* Navbar on small screens */
 @media (max-width: 768px) {
@@ -9,34 +17,74 @@
   .navbar {
     justify-content: flex-end;
     padding-right: 15px;
+    position: relative;
   }
 
   .navbar ul {
     display: none;
     flex-direction: column;
-    position: absolute;
-    top: 60px;
-    right: 15px;
-    background-color: var(--background-color);
-    width: 200px;
-    border-radius: 10px;
-    padding: 10px;
-    /* border: 2px solid #007bff; */
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: var(--background-color, #181c2b);
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    padding: 0;
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+    transition: all 0.3s ease;
   }
 
   .navbar ul.active {
-    display: flex; /* Show when toggled */
-    border:none;
+    display: flex;
+    animation: slideIn 0.3s ease;
   }
 
   .navbar ul li {
-    margin: 10px 0;
+    /* margin: 25px 0; */
+    font-size: 1rem;
+    text-align: center;
   }
 
-  /* Show Menu Toggle (☰) Only on Mobile */
-  .menu-toggle {
+  .navbar ul li a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.2em;
+    transition: color 0.3s ease;
     display: block;
+    padding: 10px 15px;
+    border-radius: 5px;
+  }
+
+  .navbar ul li a:hover {
+    color: #007bff;
+    background-color: rgba(0, 123, 255, 0.1);
+  }
+
+  /* Show Menu Toggle Only on Mobile */
+  .menu-toggle {
+    position: absolute;
+    right: 5%;
+    top: 20%;
+    display: block;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    z-index: 2001;
+  }
+
+  .menu-toggle.active {
+    transform: rotate(90deg);
+  }
+  .name-container {
+    font-size: 40px;
+  }
+  .name-animate {
+    font-size: 40px;
   }
 
   /* Fix Home Section Overlap */
@@ -49,74 +97,80 @@
     font-size: 18px; /* Adjust button size for mobile */
     padding: 8px 16px;
   }
-} 
+}
 
 /* Welcome Section */
 
 @media (max-width: 768px) {
   .welcome-section {
-    flex-direction: column;  /* Stacks the sections vertically */
-    align-items: center;     /* Centers content horizontally */
+    display: flex;
+    flex-direction: column; /* Stacks the sections vertically */
+    align-items: center; /* Centers content horizontally */
+    height: auto;
   }
-
-  
+  .button-container {
+    display: flex;
+    justify-content: center;
+  }
+  .gradient-border-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .right-section {
+    order: 1;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .right-section img {
+    width: 250px;
+    height: 300px;
+  }
   .left-section {
-    text-align: center;  /* Centers text */
-    padding: 0 20px; /* Optional: Adds some padding to the left section */
+    order: 2;
+    width: 100%;
+    text-align: center;
+    padding: 0 10px;
   }
-
   .profile-image {
-    width: 150px;  /* Adjust the size of the profile image */
-    height: 150px;
-  }
-  /* Adjust for stacking order */
-  .left-section {
-    order: 2;  /* Move the content below the profile */
+    width: 180px;
+    height: 180px;
+    max-width: 90vw;
+    margin-bottom: 15px;
+    margin-top: 10px;
+    position: static;
+    transform: none;
   }
 
   .left-section h1 {
-    font-size: 3rem; /* Reduce text size for small screens */
+    font-size: 2rem; /* Reduce text size for small screens */
   }
 
   .left-section p {
     font-size: 1rem; /* Reduce text size for small screens */
-    text-align: justify;
-    
+    text-align: left;
   }
 
   .typing-text {
     font-size: 28px; /* Reduce font size for smaller screens */
   }
-
-  .right-section {
-    order: 1;  /* Move profile image to the top */
-    width: 100%;
-    text-align: center;  /* Center the profile image */
-  }
-
-  .right-section img {
-    position:relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 20px; /* Space between image and description */
-    position: static; /* Removes absolute positioning */
-    transform: none; /* Prevents shifting */
-    max-width: 250px; /* Adjust for smaller screens */
-    height: 250px;
-    margin-top: 10px; /* Adds space */
-  }
-
-  .button-container {
-    flex-direction: row; /* Stack buttons horizontally*/
-    gap: 10px;
-    align-items: center; /* Center the buttons */
-    text-decoration: none;
-  }
 }
+/* Responsive Design */
+@media (max-width > 1024px) {
+.right-section img {
+    width: 250px;
+    height: 300px;
+  }
 
+  
+}
 /* Welcome section buttons styling */
 @media (max-width: 768px) {
+  .button-container {
+    display: flex;
+    justify-content: center;
+  }
   .github-btn,
   .linkedin-btn {
     padding: 10px; /* Adjust padding for better spacing */
@@ -133,25 +187,23 @@
   .linkedin-btn img {
     width: 25px; /* Make the icon slightly bigger for better visibility */
     height: 25px;
-  } 
+  }
 }
 
 @media (max-width: 480px) {
   .navbar {
-    justify-content: flex-end;
+    justify-content: center;
     padding: 25px;
   }
 
   .navbar ul li a {
-    color: #007bff; 
+    color: #007bff;
   }
 
   .navbar ul {
-        width: 100%;
-        padding: 5px;
-        align-items: flex-end;
-        margin: 0;
-        background-color: transparent;
+    width: 100%;
+    padding: 20px;
+    align-items: center;
   }
 }
 
@@ -171,11 +223,12 @@
   .typing-text {
     font-size: 1.2rem; /* Smaller font size */
     max-width: 95%;
-    text-align: left; /* Left-align for better readability */
+    text-align: center; /* Left-align for better readability */
     margin: 0 auto;
   }
 
-  button span { /* Hide the text inside the button */
+  button span {
+    /* Hide the text inside the button */
     display: none;
   }
 
@@ -189,20 +242,26 @@
   .welcome-section {
     display: flex;
     flex-direction: column;
-    align-items: center;  /* Center content horizontally */
-    justify-content: flex-start;  /* Align content to the top */
+    align-items: center; /* Center content horizontally */
+    justify-content: flex-start; /* Align content to the top */
     padding: 15px;
     height: auto;
     color: black;
+    position: relative;
+    top: 3vh;
+  }
+  .button-container {
+    display: flex;
+    justify-content: center;
   }
 
   /* Profile image */
   .profile-image {
-    width: 200px;
-    height: 200px;
-    max-height: 200px;
-    border-radius: 50%;  /* Optional: Makes the profile picture circular */
-    margin-bottom: 15px;  /* Adds space between image and the content below */
+    /* width: 250px; */
+    height: 280px;
+    /* max-height: 200px; */
+    border-radius: 50%; /* Optional: Makes the profile picture circular */
+    margin-bottom: 15px; /* Adds space between image and the content below */
   }
 }
 
@@ -279,82 +338,128 @@
   }
 }
 
-
 /* Projects Section */
 
 /* Adjustments for Tablets (screens between 600px and 1024px) */
 @media (max-width: 1024px) {
+  .project-description > p,
+  .project-description > .language-logo-container {
+    display: none !important;
+  }
   #projects {
     padding: 1.5rem;
     margin: 20px;
   }
 
   .project {
-    flex-direction: row;
-    align-items: flex-start;
-    text-align: left;
+    flex-direction: column; /* Change to column for better stacking */
+    align-items: center; /* Center align items */
+    text-align: center; /* Center text */
+    transition: transform 0.3s ease; /* Add transition for animation */
+  }
+
+  .project-title {
+    width: max-content;
+    font-size: 4.5vh;
+  }
+  .project:hover {
+    transform: scale(1.05); /* Scale effect on hover */
   }
 
   .project-output img {
-    max-width: 70%;
+    max-width: 100%;
+    transition: opacity 0.2s ease; /*Fade effect on hover*/
+  }
+
+  .project-output img:hover {
+    opacity: 0.8; /* Slightly fade image on hover */
   }
 }
 
 /* Adjustments for Mobile Devices (screens smaller than 600px) */
 @media (max-width: 600px) {
-  #projects {
-    padding: 1rem;
-    margin: 10px;
-  }
-
-  .project {
-    flex-direction: column;
-    text-align: center;
-    width: 100%;
+  .project-description > p,
+  .project-description > .language-logo-container {
+    display: none !important;
   }
 
   .project-title {
-    font-size: 1.5rem;
-  }
-
-  .project-description {
-    max-width: 90%;
-    padding: 10px;
-  }
-
-  .project-output img {
-    max-width: 100%;
-  }
-
-  .project-languages img {
-    width: 30px;
-    height: 30px;
+    width: max-content;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    animation: fadeIn 0.5s ease; /* Fade-in animation for project name */
+    font-size: 3.3vh;
   }
 
   .button-container1 {
-    flex-direction: row; /* Ensure buttons are aligned horizontally */
-    justify-content: space-evenly; /* Distribute buttons evenly across available space */
+    width: 100%;
+    display: flex;
+    justify-content: center; /* Center buttons */
+    animation: slideIn 0.5s ease; /* Slide-in animation for buttons */
   }
 
-  .view-btn,
-  .github-btn {
-    width: 45%; /* Limit the button width so they fit side by side */
+  .button-container1 .view-btn span,
+  .button-container1 .github-btn span {
+    display: none !important;
+  }
+
+  .button-container1 .btn-icon {
+    margin-right: 0 !important;
+  }
+
+  .button-container1 .view-btn,
+  .button-container1 .github-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease; /* Transition for button hover */
+  }
+
+  .button-container1 .view-btn:hover,
+  .button-container1 .github-btn:hover {
+    background-color: rgba(0, 0, 0, 0.1); /* Change background on hover */
   }
 }
 
+/* Keyframes for animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 
-
+@keyframes slideIn {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
 
 /* Skills Section */
 @media (max-width: 1024px) {
   .skills-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 columns for tablets */
+    grid-template-columns: repeat(2, 1fr); /* 3 columns for tablets */
     gap: 1.5rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .skill-logo:hover img {
+    transform: translateY(0);
   }
 }
 
 @media (max-width: 768px) {
+  .skills-container h4 {
+    display: none !important;
+  }
   .skills-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* 2 columns for smaller screens */
@@ -362,31 +467,52 @@
   }
 
   .skill-logo {
-    width: 80px;
-    height: 80px;
+    width: 100%;
+    height: 100%;
   }
 
   .skill-logo img {
-    width: 50%;
+    width: 35%;
+  }
+  .skill-logo:hover img {
+    transform: translateY(0);
   }
 }
-
 @media (max-width: 480px) {
+  .skills-container h4 {
+    display: none !important;
+  }
   .skills-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* 2 column for smaller screens */
     gap: 1rem;
     justify-items: center; /* Center items horizontally */
-    align-items: center;   /* Center items vertically */
+    align-items: center; /* Center items vertically */
     padding: 0 10px; /* Padding to prevent overflow */
   }
-
+  .skill-logo:hover img {
+    transform: translateY(0);
+  }
   .skill-card {
     width: 100%; /* Ensure each skill card takes up full width of grid */
     max-width: 300px; /* You can adjust this to your preference */
   }
 }
-
+/*For React Logo svg*/
+/* Media query for tablets */
+@media (max-width: 1024px) {
+  svg {
+    width: 60px; /* Adjust size for tablets */
+    height: 60px;
+  }
+}
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+  svg {
+    width: 50px; /* Adjust size for smaller screens */
+    height: 50px;
+  }
+}
 
 
 /* My Education Section */
@@ -449,23 +575,22 @@
   }
 }
 
-
 /* Contact Me Section */
 @media (max-width: 768px) {
   .content-wrapper {
-      flex-direction: column;
-      text-align: center;
-      padding: 20px;
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
   }
 
   .left-content {
-      padding: 0;
-      margin-bottom: 30px;
+    padding: 0;
+    margin-bottom: 30px;
   }
 }
 
-  /* Footer Media Queries */
-  /* Default styles for larger screens are already defined */
+/* Footer Media Queries */
+/* Default styles for larger screens are already defined */
 
 @media (max-width: 768px) {
   .footer-container {
@@ -478,8 +603,7 @@
   }
 
   .social-links {
-    flex-direction: column; /* Stack social icons vertically */
-    gap: 1rem; /* Reduce the gap between icons */
+    flex-direction: colrowumn; /* Stack social icons horizontally */
   }
 
   .social-icon img {
@@ -494,7 +618,7 @@
   }
 
   .social-links {
-    gap: 0.5rem; /* Tighten gap further for very small screens */
+    gap: 1.5rem; /* Tighten gap further for very small screens */
   }
 
   .social-icon img {
